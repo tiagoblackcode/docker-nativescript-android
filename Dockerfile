@@ -21,7 +21,7 @@ RUN cd /tmp && \
         "build-tools;27.0.3" \
         "extras;google;m2repository" \
         "extras;android;m2repository" && \
-    rm -rf /tmp
+    rm -rf /tmp/*
 
 # nativescript
 RUN npm install -g nativescript@4.2 && \
