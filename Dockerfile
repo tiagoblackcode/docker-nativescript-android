@@ -2,7 +2,9 @@ FROM node:10-stretch
 
 # java 8
 RUN apt-get update && \
-    apt-get install -y unzip openjdk-8-jdk-headless
+    apt-get install -y unzip openjdk-8-jdk-headless && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/lib/apt/*
 
 # android sdk tools
 RUN cd /tmp && \
@@ -11,14 +13,15 @@ RUN cd /tmp && \
     mkdir -p /android-sdk && \
     mv tools /android-sdk/tools && \
     cd /android-sdk && \
-    yes | tools/bin/sdkmanager --licenses && \
+    yes | tools/bin/sdkmanager --licenses >/dev/null && \
     tools/bin/sdkmanager \
         "tools" \
         "platform-tools" \
         "platforms;android-27" \
         "build-tools;27.0.3" \
         "extras;google;m2repository" \
-        "extras;android;m2repository"
+        "extras;android;m2repository" && \
+    rm -rf /tmp
 
 # nativescript
 RUN npm install -g nativescript@4.2 && \
