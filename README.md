@@ -5,7 +5,7 @@ This repository includes the NativeScript CLI along with the Android SDK with th
 * NodeJS 10
 * Java 8
 * NativeScript 4.2
-* Android SDK tools for API Level 27
+* Android SDK tools for API Level 27 (build tools 27.0.3)
 
 # Running
 

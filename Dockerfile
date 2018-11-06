@@ -16,7 +16,7 @@ RUN cd /tmp && \
         "tools" \
         "platform-tools" \
         "platforms;android-27" \
-        "build-tools;27.0.0" \
+        "build-tools;27.0.3" \
         "extras;google;m2repository" \
         "extras;android;m2repository"
 
