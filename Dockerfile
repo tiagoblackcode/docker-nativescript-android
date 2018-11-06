@@ -15,8 +15,8 @@ RUN cd /tmp && \
     tools/bin/sdkmanager \
         "tools" \
         "platform-tools" \
-        "platforms;android-26" \
-        "build-tools;26.0.0" \
+        "platforms;android-27" \
+        "build-tools;27.0.0" \
         "extras;google;m2repository" \
         "extras;android;m2repository"
 
