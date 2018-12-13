@@ -1,0 +1,31 @@
+FROM node:10-stretch
+
+# java 8
+RUN apt-get update && \
+    apt-get install -y unzip openjdk-8-jdk-headless && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/lib/apt/*
+
+# android sdk tools
+RUN cd /tmp && \
+    wget --quiet https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip && \
+    unzip -q sdk* && \
+    mkdir -p /android-sdk && \
+    mv tools /android-sdk/tools && \
+    cd /android-sdk && \
+    yes | tools/bin/sdkmanager --licenses >/dev/null && \
+    tools/bin/sdkmanager \
+        "tools" \
+        "platform-tools" \
+        "platforms;android-28" \
+        "build-tools;28.0.3" \
+        "extras;google;m2repository" \
+        "extras;android;m2repository" && \
+    rm -rf /tmp/*
+
+# nativescript
+RUN npm install -g nativescript@5.1.0 && \
+    tns usage-reporting disable && \
+    tns error-reporting enable
+
+ENV ANDROID_HOME=/android-sdk
